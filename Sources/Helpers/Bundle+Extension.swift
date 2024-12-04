@@ -8,10 +8,12 @@
 import Foundation
 
 public extension Bundle {
-
 	@objc static var FlagIcons = FlagPhoneNumber()
 
 	@objc static func FlagPhoneNumber() -> Bundle {
+		#if SWIFT_PACKAGE
+		return Bundle.module
+		#else
 		let bundle = Bundle(for: FPNTextField.self)
 
 		if let path = bundle.path(forResource: "FlagPhoneNumber", ofType: "bundle") {
@@ -19,5 +21,6 @@ public extension Bundle {
 		} else {
 			return bundle
 		}
+		#endif
 	}
 }
