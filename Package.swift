@@ -1,4 +1,4 @@
-// swift-tools-version:5.0
+// swift-tools-version:5.3
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -32,13 +32,13 @@ let package = Package(
         ),
         .target(
             name: "FlagPhoneNumber",
-            resources: [
-                .process("Resources")
-            ]
             dependencies: ["libPhoneNumber"],
             path: "Sources",
             exclude: ["Info.plist", "libPhoneNumber"],
-            publicHeadersPath: "."
+            publicHeadersPath: ".",
+            resources: [
+                .process("Resources")
+            ]
         ),
     ]
 )
